@@ -14,7 +14,7 @@ class AuthServices {
     }
   }
 
-  // get current user
+  // get current user = buat ngabil nama user (misalnya halo! @user, mau makan apa hari ini?) 
   User? get currentUser => _auth.currentUser;
 
   // auth state changes stream = loginnya sekali aja, jadi ga usah login terus tiap buka app
@@ -22,7 +22,7 @@ class AuthServices {
 
   // sign in gmail and password
   Future<UserCredential> signInWithEmailAndPassword(String email, String password) async {
-    // kenapa pakai async? = karena dia menunggu pengecekan (ada proses menunggu), dia (frontend) ngobrol dulu sama firebase
+    // kenapa pakai async? = karena dia menunggu pengecekan (ada proses menunggu), dia (frontend) ngobrol dulu sama firebase (frontend ngasih data user ke database)
     try {
       return await _auth.signInWithEmailAndPassword(
         email: email,
