@@ -22,18 +22,18 @@ class AttendanceRecord {
     });
 
     factory AttendanceRecord.fromJson(Map<String, dynamic> json) {
-      return AttendanceRecord(
-        id: json['id'] as String,
-        userId: json['user_id'] as String,
-        checkInTime: DateTime.parse(json['check_in_time'] as String),
-        checkOutTime: json['check_out_time'] != null ? DateTime.parse(json['check_out_time'] as String),
-        date: DateTime.parse(json['date'] as String),
-        location: json['location'] as String?,
-        notes: json['notes'] as String?,
-        checkInPhotoPath: json['check_in_photo_path'] as String?,
-        checkOutPhotoPath: json['check_out_photo_path'] as String?
-      );
-    }
+    return AttendanceRecord(
+      id: json['id'] as String,
+      userId: json['user_id'] as String,
+      checkInTime: DateTime.parse(json['check_in_time'] as String),
+      checkOutTime: json['check_out_time'] != null ? DateTime.parse(json['check_out_time'] as String) : null,
+      date: DateTime.parse(json['date'] as String),
+      location: json['location'] as String?,
+      notes: json['notes'] as String?,
+      checkInPhotoPath: json['check_in_photo_path'] as String?,
+      checkOutPhotoPath: json['check_out_photo_path'] as String?
+    );
+  }
 
     Map<String, dynamic> toJson() {
       return {
