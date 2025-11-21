@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<void> _checkOut(String? photoPath) async {
+  Future<void> _checkOut({String? photoPath}) async {
     if (_todayRecord == null) return;
 
     setState(() => _isLoading = true);
@@ -191,7 +191,14 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 24),
               AttendanceCard(todayRecord: _todayRecord),
               SizedBox(height: 24),
-              ActionButton(todayRecord: todayRecord, isLoading: isLoading, onCheckIn: onCheckIn, onCheckOut: onCheckOut, onCheckInPhoto: onCheckInPhoto, onCheckoutPhoto: onCheckoutPhoto)
+              ActionButton(
+                todayRecord: _todayRecord,
+                isLoading: _isLoading,
+                onCheckIn: () => _checkIn(),
+                onCheckOut: () => _checkOut(),
+                onCheckInWithPhoto: (path) => _checkIn(photoPath: path),
+                onCheckOutWithPhoto: (path) => _checkOut(photoPath: path),
+              )
             ],
           ),
         ),
